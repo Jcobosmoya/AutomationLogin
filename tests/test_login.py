@@ -10,7 +10,7 @@ def test_positive_login():
         page.goto(URL)
         page.fill('#username', 'student')
         page.fill('#password', 'Password123')
-        page.click('button[type="submit"]')
+        page.click('#submit')
 
         # Verificaciones
         assert "/logged-in-successfully/" in page.url
@@ -25,7 +25,7 @@ def test_invalid_username():
         page.goto(URL)
         page.fill('#username', 'incorrectUser')
         page.fill('#password', 'Password123')
-        page.click('button[type="submit"]')
+        page.click('#submit')
 
         expect(page.locator('#error')).to_have_text("Your username is invalid!")
         browser.close()
@@ -37,7 +37,7 @@ def test_invalid_password():
         page.goto(URL)
         page.fill('#username', 'student')
         page.fill('#password', 'incorrectPassword')
-        page.click('button[type="submit"]')
+        page.click('#submit')
 
         expect(page.locator('#error')).to_have_text("Your password is invalid!")
         browser.close()
